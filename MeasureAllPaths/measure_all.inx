@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+	<_name>Measure All Paths</_name>
+	<id>com.njhurst.filter.measure_all_length</id>
+	<dependency type="executable" location="extensions">measure_all.py</dependency>
+	<dependency type="executable" location="extensions">inkex.py</dependency>
+	<param name="tab" type="notebook">
+		<page name="measure all" _gui-text="Measure All">			
+			<param name="precision" type="int" min="0" max="25" _gui-text="Precision">2</param>
+			<param name="scale" type="float" min="1e-8" max="1e10" _gui-text="Scale Factor (Drawing:Real Length) = 1:">1</param>
+			<param name="unit" type="enum" _gui-text="Length Unit: ">
+				<item value="px">px</item>
+				<item value="pt">pt</item>
+				<item value="in">in</item>
+				<item value="ft">ft</item>
+				<item value="yd">yd</item>
+				<item value="mm">mm</item>
+				<item value="cm">cm</item>
+				<item value="m">m</item>
+				<item value="km">km</item>
+			</param>
+		</page>
+		<page name="desc" _gui-text="Help">
+			<_param name="measurehelp" type="description" xml:space="preserve">This effect measures the length of all the paths in the document and groups by color. It returns the results as a debug measage.
+            
+  * The number of significant digits can be controlled by the Precision field.
+  * The Scale factor can be used to make measurements in scaled drawings. For example, if 1 cm in the drawing equals 2.5 m in the real world, Scale must be set to 250.
+ </_param>
+		</page>
+	</param>
+	<effect>
+		<object-type>path</object-type>
+		<effects-menu>
+			<submenu _name="Visualize Path"/>
+		</effects-menu>
+	</effect>
+	<script>
+		<command reldir="extensions" interpreter="python">measure_all.py</command>
+	</script>
+</inkscape-extension>
